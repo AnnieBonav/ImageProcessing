@@ -1,0 +1,4 @@
+opencv-python
+keras
+scikit-image
+tensorflow
