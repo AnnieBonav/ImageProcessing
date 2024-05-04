@@ -2,7 +2,8 @@ import sys, time, cv2
 import numpy as np
 from skimage import draw
 
-BRUSHES = 50
+# BRUSHES does not seem to do anything
+BRUSHES = 100
 flowers1 = "TestImages/FlowersVase1.jpeg"
 
 def process(inputImage, brushSize):
@@ -24,7 +25,6 @@ def process(inputImage, brushSize):
     
     return result, time.time() - start
 
-
 inputImage = cv2.imread(flowers1)
 brushSize = 10.0
 
@@ -42,6 +42,7 @@ def showImage(img):
     cv2.destroyAllWindows()
 
 showImage(result)
-folderPath = "SimpleImpressionistFilterTests"
-outputImage = f"IFBrushSize{brushSize}.jpg"
+folderPath = "TestingBrush"
+outputImage = f"BrushSize{brushSize}Brushes{BRUSHES}.jpg"
+
 cv2.imwrite(f"{folderPath}/{outputImage}", result)
