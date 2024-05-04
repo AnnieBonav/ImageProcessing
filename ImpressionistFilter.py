@@ -4,7 +4,7 @@ import skimage as ski
 from skimage import draw
 from math import ceil, pi
 
-BRUSHES = 50
+BRUSHES = 1
 flowers1 = "TestImages/FlowersVase1.jpeg"
 
 # Cargar y mostrar una imagen con Scikit-Image
@@ -18,7 +18,7 @@ def process(inputImage, brushSize, intensity):
     margin = int(expressionSize * 2)
     halfBrushSizeInt = brushSizeInt // 2
     
-    shape = ((inputImage.shape[0] - 2 * margin) // brushSizeInt, (inputImage.shape[1] - 2 * margin) // brushSizeInt)
+    # shape = ((inputImage.shape[0] - 2 * margin) // brushSizeInt, (inputImage.shape[1] - 2 * margin) // brushSizeInt)
     brushes = [draw.ellipse(halfBrushSizeInt, halfBrushSizeInt, brushSize, random.randint(brushSizeInt, expressionSize), rotation=random.random() * pi) for _ in range(BRUSHES)]
 
     result = np.zeros(inputImage.shape, dtype=np.uint8)
@@ -33,8 +33,7 @@ def process(inputImage, brushSize, intensity):
 
 inputImage = cv2.imread(flowers1)
 brushSize = 5.0
-intensity = 5.0
-
+intensity = 15.0
 
 if inputImage.ndim < 3:
     sys.exit('Only RGB or RGBA images supported.')
@@ -52,4 +51,5 @@ def showImage(img):
 showImage(result)
 folderPath = "ImpressionistFilterTests"
 outputImage = f"IFBrushSize{brushSize}Intensity{intensity}.jpg"
-cv2.imwrite(f"{folderPath}/{outputImage}", result)
+
+# cv2.imwrite(f"{folderPath}/{outputImage}", result)
