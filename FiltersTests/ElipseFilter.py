@@ -2,9 +2,9 @@ import sys, time, cv2, random, numpy as np
 from skimage import draw
 from math import ceil, pi
 
-flowers1 = "TestImages/FlowersVase1.jpeg"
+flowers1 = "TestImages/PaYYo1.jpeg"
 
-brushesAmount = 5
+brushesAmount = 50
 def filterImage(inputImage, brushSize, intensity):
     global brushesAmount
 
@@ -33,7 +33,7 @@ def filterImage(inputImage, brushSize, intensity):
 inputImage = cv2.imread(flowers1)
 inputImage = inputImage[:, :, :3]
 
-brushSize = 10.0
+brushSize = 20.0
 intensity = 2.0
 
 result, duration = filterImage(inputImage, brushSize = brushSize, intensity = intensity)
@@ -45,7 +45,7 @@ def showImage(img):
     cv2.destroyAllWindows()
 
 showImage(result)
-folderPath = "TestingBrush"
+folderPath = "MyPics"
 outputImage = f"BrushSize{brushSize}Intensity{intensity}BrushesAmount{brushesAmount}.jpg"
 
 cv2.imwrite(f"{folderPath}/{outputImage}", result)
